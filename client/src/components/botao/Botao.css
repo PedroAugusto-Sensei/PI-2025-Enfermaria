@@ -1,0 +1,25 @@
+.botao {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.claro {
+  background-color: #e6f4ea;
+  color: #1a4b2c;
+}
+
+.escuro {
+  background-color: #1a4b2c;
+  color: white;
+}
+
+.vazado {
+  background-color: transparent;
+  color: #1a4b2c;
+  border: 2px solid #1a4b2c;
+}
