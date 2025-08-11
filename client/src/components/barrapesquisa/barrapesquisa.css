@@ -1,0 +1,85 @@
+:root{
+  --green: #3f6f4a;         /* cor da borda */
+  --green-dark: #2f5a37;    /* cor do texto do botão e ícone */
+  --green-light: #eef9ee;   /* fundo claro do input */
+  --placeholder: #8ea98b;   /* cor do placeholder */
+}
+
+/* container flex — define largura visual */
+.sb-form {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;          /* separação clara entre input e botão (imagem) */
+  width: 900px;       /* ajuste conforme necessidade; pode usar max-width:100% */
+  max-width: 100%;
+  padding: 0 4px;     /* pequeno padding externo */
+}
+
+/* INPUT */
+.sb-input {
+  flex: 1;                         /* ocupa o máximo possível */
+  padding: 14px 18px;
+  border: 3px solid var(--green);
+  border-radius: 18px;
+  background: var(--green-light);
+  color: var(--green-dark);
+  font-size: 20px;
+  line-height: 1;
+  outline: none;
+  transition: box-shadow .12s, transform .08s;
+  /* evita que o texto "colado" chegue até a borda no mobile */
+  min-width: 160px;
+}
+
+/* Placeholder */
+.sb-input::placeholder {
+  color: var(--placeholder);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* foco leve */
+.sb-input:focus {
+  box-shadow: 0 0 0 6px rgba(63,111,74,0.06);
+}
+
+/* BUTTON */
+.sb-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 3px solid var(--green);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background .12s, transform .06s;
+}
+
+/* ícone segue a cor atual do botão (currentColor) */
+.sb-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--green-dark);
+  display: inline-block;
+}
+
+/* hover */
+.sb-button:hover {
+  background: #f7fbf7;
+  transform: translateY(-1px);
+}
+
+/* responsivo — encolhe fontes e paddings em telas pequenas */
+@media (max-width: 600px) {
+  .sb-form { width: 100%; }
+  .sb-input, .sb-button {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+  .sb-icon { width: 18px; height: 18px; }
+}
