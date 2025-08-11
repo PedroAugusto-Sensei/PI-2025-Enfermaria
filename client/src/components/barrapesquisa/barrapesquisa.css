@@ -10,26 +10,26 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;          /* separação clara entre input e botão (imagem) */
-  width: 900px;       /* ajuste conforme necessidade; pode usar max-width:100% */
+  width: 700px;       /* ajuste conforme necessidade; pode usar max-width:100% */
   max-width: 100%;
   padding: 0 4px;     /* pequeno padding externo */
 }
 
-/* INPUT */
+/* input */
 .sb-input {
-  flex: 1;                         /* ocupa o máximo possível */
-  padding: 14px 18px;
+  flex: 1;
+  padding: 12px 22px; /* mesmo padding do botão */
   border: 3px solid var(--green);
   border-radius: 18px;
-  background: var(--green-light);
+  background: #fff; /* igual ao botão */
   color: var(--green-dark);
   font-size: 20px;
   line-height: 1;
   outline: none;
   transition: box-shadow .12s, transform .08s;
-  /* evita que o texto "colado" chegue até a borda no mobile */
   min-width: 160px;
 }
+
 
 /* Placeholder */
 .sb-input::placeholder {
@@ -54,7 +54,7 @@
   background: #fff;
   color: var(--green-dark);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
   line-height: 1;
   transition: background .12s, transform .06s;
