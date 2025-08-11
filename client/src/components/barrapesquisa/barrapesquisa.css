@@ -5,23 +5,23 @@
   --placeholder: #8ea98b;   /* cor do placeholder */
 }
 
-/* container flex — define largura visual */
+/* container flex */
 .sb-form {
   display: inline-flex;
   align-items: center;
-  gap: 10px;          /* separação clara entre input e botão (imagem) */
-  width: 700px;       /* ajuste conforme necessidade; pode usar max-width:100% */
+  gap: 10px;        
+  width: 700px;
   max-width: 100%;
-  padding: 0 4px;     /* pequeno padding externo */
+  padding: 0 4px;     
 }
 
 /* input */
 .sb-input {
   flex: 1;
-  padding: 12px 22px; /* mesmo padding do botão */
+  padding: 12px 22px;
   border: 3px solid var(--green);
   border-radius: 18px;
-  background: #fff; /* igual ao botão */
+  background: #fff; 
   color: var(--green-dark);
   font-size: 20px;
   line-height: 1;
@@ -83,3 +83,4 @@
   }
   .sb-icon { width: 18px; height: 18px; }
 }
+
