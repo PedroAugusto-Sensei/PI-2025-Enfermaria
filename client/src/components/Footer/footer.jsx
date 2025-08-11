@@ -11,7 +11,7 @@ export default function Footer() {
             alt="Instituto Federal"
             className="if-logo"
           />
-          <img src="/IFC Con.png" alt="Instituto Federal" className="if-logo" />
+          <img src="/assets/imagens/IFClogo.png" alt="Instituto Federal" className="if-logo" />
           <div className="if-text">
             <strong>INSTITUTO FEDERAL</strong><br />
             Catarinense<br />

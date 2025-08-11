@@ -1,0 +1,113 @@
+.pagina-cadastro {
+  min-height: 100vh;
+  background-color: #f4fbf5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  opacity: 0.15;
+}
+
+.coracao {
+  top: 70px;
+  left: 120px;
+  width: 150px;
+}
+
+.cruz {
+  top: 230px;
+  left: 100px;
+  width: 150px;
+}
+
+.estetoscopio {
+  top: 200px;
+  right: 150px;
+  width: 150px;
+}
+
+.mao {
+  bottom: 140px;
+  right: 150px;
+  width: 150px;
+}
+
+.pote {
+  top: 60px;
+  right: 150px;
+  width: 150px;
+}
+
+.raio {
+  bottom: 150px;
+  left: 180px;
+  width: 150px;
+}
+
+
+.titulo {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 22px;
+  color: #3d6334;
+  font-weight: 600;
+  text-align: center;
+  z-index: 1;
+}
+.form-cadastro {
+  background-color: #bcd9bb;
+  border: 2px solid #3d6334;
+  border-radius: 16px;
+  padding: 40px 35px;
+  width: 320px;
+  z-index: 1;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+
+.form-cadastro h3 {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-weight: 600;
+  color: #3d6334;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+
+.form-cadastro label {
+  align-self: flex-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #3d6334;
+  width: 100%;
+}
+
+.form-cadastro input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 18px;
+  font-size: 14px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.form-cadastro input:focus {
+  outline: 2px solid #3d6334;
+  background-color: #f9fff9;
+}
+
+.form-cadastro button {
+  margin-top: 5px;
+}
