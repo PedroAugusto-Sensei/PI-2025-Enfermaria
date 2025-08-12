@@ -1,13 +1,14 @@
 import './item.css';
+import Botao from "../../components/botao/Botao.jsx";
 
 const ListaPaciente = ({ nome, curso }) => {
   return (
     <div className="paciente">
       <span className="nome">{nome}</span>
       <span className="curso">{curso}</span>
-      <div className="patient-buttons">
-        <button children="Histórico" variante="escuro"/>
-        <button children="Consultar" variante="escuro"/>/
+      <div className="botoespaciente">
+        <Botao children="Histórico" variante="claro"/>
+        <Botao children="Consultar" variante="claro"/>
       </div>
     </div>
   );

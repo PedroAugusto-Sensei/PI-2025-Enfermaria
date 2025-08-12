@@ -5,41 +5,30 @@ import ListaPaciente from "../../../components/Item/item.jsx";
 import SearchBar from "../../../components/barrapesquisa/barrapesquisa.jsx";
 
 export default function Pacientes() {
-  const pacientes = [
-    { nome: "Fulano da Silva", turma: "E.M - 2F" },
-    { nome: "Fulano Machado", turma: "Servidor" },
-    { nome: "Fulano Dalle Laste", turma: "Superior Matemática" },
-    { nome: "Fulano Mior", turma: "E.M - 1E" },
-    { nome: "Fulano Chitolina", turma: "Superior - Ciências da Computação" },
-    { nome: "Fulano Schneider", turma: "Servidor" },
-    { nome: "Fulano Bósio", turma: "E.M - 1G" }
-  ];
 
   return (
-    <div className="pagina-pacientes">
+    <>
+        <div className="pagina-pacientes">
 
-      <Header titulo="Enfermaria IFC" />
+        <Header titulo="Enfermaria IFC" />
 
-      <h2 className="titulo-pagina">Pacientes</h2>
+        <h2 className="titulo-pagina">Pacientes</h2>
 
-      <div className="barra-acoes">
-        <Botao children="Cadastrar +" variante="escuro" />
-        <SearchBar placeholder="Pesquisar" botaoBuscar />
-      </div>
+        <div className="barra-acoes">
+            <Botao children="Cadastrar +" variante="escuro" />
+            <SearchBar placeholder="Pesquisar" botaoBuscar />
+        </div>
 
-      <div className="lista-pacientes">
-        {pacientes.map((p, index) => (
-          <ListaPaciente
-            key={index}
-            nome={p.nome}
-            turma={p.turma}
-            historico
-            consultar
-          />
-        ))}
-      </div>
+        <ListaPaciente nome='Fulano da Silva' curso='E.M - 2F'/>
+        <ListaPaciente nome='Fulano Machado' curso='Servidor'/>
+        <ListaPaciente nome='Fulano Dalle Laste' curso='Superior Matemática'/>
+        <ListaPaciente nome='Fulano Mior' curso='E.M - 1E'/>
+        <ListaPaciente nome='Fulano Chitolina' curso='Superior - Ciências da Computação'/>
+        <ListaPaciente nome='Fulano Schneider' curso='Servidor'/>
+        <ListaPaciente nome='Fulano Bósio' curso='E.M - 1G'/>
+        </div>
 
-      <Footer />
-    </div>
+        <Footer />
+    </>
   );
 }
