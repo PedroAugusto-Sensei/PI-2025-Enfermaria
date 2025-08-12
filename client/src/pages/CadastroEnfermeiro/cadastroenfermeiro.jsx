@@ -37,7 +37,8 @@ export default function CadastroEnfermeiro() {
           <input type="password" />
           <label>Confirmar Senha</label>
           <input type="password" />
-          <Botao texto="Cadastrar" />
+          <Botao variante="escuro">Cadastrar</Botao>
+
         </form>
       </div>
       <Footer />
