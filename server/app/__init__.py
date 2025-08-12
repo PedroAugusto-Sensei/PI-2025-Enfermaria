@@ -19,7 +19,7 @@ def create_app():
     from app import routes
     routes.init_routes(app)
 
-    @app.before_first_request
+    @app.before_request
     def create_tables():
         db.create_all()
 
