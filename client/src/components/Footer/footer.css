@@ -1,13 +1,17 @@
-/* Fundo rosa lateral */
 .footer-container {
-  background-color: #d8c4d3; /* Rosa claro (borda) */
-  padding: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #cbe5ce; /* Verde claro */
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
 /* Footer verde central */
 .footer {
-  background-color: #cbe5ce; /* Verde claro */
-  border-top: 2px solid white;
+    width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,14 +28,9 @@
 }
 
 .if-logo {
-  height: 50px;
+  height: 75px;
 }
 
-/* Texto ao lado da logo */
-.if-text {
-  font-size: 14px;
-  color: #000;
-}
 
 /* Parte direita */
 .footer-right {
