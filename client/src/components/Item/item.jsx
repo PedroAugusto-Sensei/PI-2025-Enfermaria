@@ -6,8 +6,8 @@ const ListaPaciente = ({ nome, curso }) => {
       <span className="nome">{nome}</span>
       <span className="curso">{curso}</span>
       <div className="patient-buttons">
-        <button className="btn-historico">Histórico</button>
-        <button className="btn-consultar">Consultar</button>
+        <button children="Histórico" variante="escuro"/>
+        <button children="Consultar" variante="escuro"/>/
       </div>
     </div>
   );
