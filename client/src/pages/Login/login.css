@@ -11,43 +11,47 @@
 
 .icon {
   position: absolute;
-  opacity: 0.15;
+  opacity: 1;
 }
 
 .coracao {
-  top: 70px;
-  left: 120px;
-  width: 150px;
+  top: 7%;
+  left: 4%;
+  width: 100px;
+  transform: rotate(-15deg)
 }
 
 .cruz {
-  top: 230px;
-  left: 100px;
-  width: 150px;
+  top: 40%;
+  left: 20%;
+  width: 100px;
+  transform: rotate(25deg)
 }
 
 .estetoscopio {
-  top: 200px;
-  right: 150px;
-  width: 150px;
+  top: 30%;
+  right: 25%;
+  width: 100px;
+  transform: rotate(-15deg)
 }
 
 .mao {
-  bottom: 140px;
-  right: 150px;
-  width: 150px;
+  bottom: 25%;
+  right: 10%;
+  width: 100px;
 }
 
 .pote {
-  top: 60px;
-  right: 150px;
-  width: 150px;
+  top: 9%;
+  right: 10%;
+  width: 100px;
+  transform: rotate(-35deg)
 }
 
 .raio {
-  bottom: 150px;
-  left: 180px;
-  width: 150px;
+  bottom: 25%;
+  left: 11%;
+  width: 100px;
 }
 
 
