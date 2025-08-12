@@ -12,14 +12,15 @@ function App() {
     <>
       <Router>
         <Routes>
+           <Route path="/cadastropaciente" element={<CadPaciente />} />
           <Route path="/" element={<Login />} />
-          <Route path="/cadastropaciente" element={<CadPaciente />} />
           <Route path="/cadastroenfermeiro" element={<CadEnfermeiro />} />
           <Route path="/consulta" element={<Consulta />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/listapacientes" element={<ListPacientes />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }

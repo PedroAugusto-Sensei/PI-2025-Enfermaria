@@ -1,22 +1,14 @@
 import React from 'react';
-import './Footer.css'; // Importa o CSS externo
+import './Footer.css'; 
+import ifLogo from '../../assets/imagens/IFClogo.png';
 
 export default function Footer() {
+  console.log('ifLogo =>', ifLogo);
   return (
     <div className="footer-container">
       <footer className="footer">
         <div className="footer-left">
-          <img
-            src="\" // Substitua com o caminho correto da logo
-            alt="Instituto Federal"
-            className="if-logo"
-          />
-          <img src="/assets/imagens/IFClogo.png" alt="Instituto Federal" className="if-logo" />
-          <div className="if-text">
-            <strong>INSTITUTO FEDERAL</strong><br />
-            Catarinense<br />
-            Campus Concórdia
-          </div>
+          <img src={ifLogo} alt="Instituto Federal" className="if-logo" />
         </div>
 
         <div className="footer-right">
