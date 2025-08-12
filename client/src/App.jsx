@@ -7,6 +7,7 @@ import Historico from "./pages/Pacientes/Historico/historico";
 import ListPacientes from "./pages/Pacientes/Lista/listapacientes";
 import CadEnfermeiro from "./pages/CadastroEnfermeiro/cadastroenfermeiro";
 
+
 function App() {
   return (
     <>
