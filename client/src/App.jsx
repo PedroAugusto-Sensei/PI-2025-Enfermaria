@@ -8,6 +8,7 @@ import Historico from "./pages/Pacientes/Historico/historico";
 import ListPacientes from "./pages/Pacientes/Lista/listapacientes";
 import CadEnfermeiro from "./pages/CadastroEnfermeiro/cadastroenfermeiro";
 
+
 function App() {
   return (
     <>
@@ -24,8 +25,8 @@ function App() {
         </nav>
 
         <Routes>
+           <Route path="/cadastropaciente" element={<CadPaciente />} />
           <Route path="/" element={<Login />} />
-          <Route path="/cadastropaciente" element={<CadPaciente />} />
           <Route path="/cadastroenfermeiro" element={<CadEnfermeiro />} />
           <Route path="/consulta" element={<Consulta />} />
           <Route path="/consulta-enfermaria" element={<ConsultaEnfermaria />} />
@@ -33,6 +34,7 @@ function App() {
           <Route path="/listapacientes" element={<ListPacientes />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }
