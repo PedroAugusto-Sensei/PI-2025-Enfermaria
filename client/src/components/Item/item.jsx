@@ -1,8 +1,6 @@
-// components/PatientItem.jsx
-import React from 'react';
 import './item.css';
 
-const listapaciente = ({ name, grade }) => {
+const ListaPaciente = ({ nome, curso }) => {
   return (
     <div className="paciente">
       <span className="nome">{nome}</span>
@@ -15,4 +13,4 @@ const listapaciente = ({ name, grade }) => {
   );
 };
 
-export default listapaciente;
+export default ListaPaciente;
