@@ -14,6 +14,7 @@ cd PI-2025-Enfermaria
 cd client
 npm install
 cd ..
+cd server
 pip install Flask
 pip install -U flask-cors
 pip install flask-sqlalchemy
@@ -28,5 +29,5 @@ Serão necessários dois terminais, um para rodar o FrontEnd e outro para o Back
 2. No segundo terminal (para rodar o BackEnd) execute:
 ```
    cd server (caso ainda não esteja na pasta)
-   main.py
+   py main.py
 ```

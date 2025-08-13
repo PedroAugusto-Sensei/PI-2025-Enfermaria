@@ -1,18 +1,17 @@
-// components/PatientItem.jsx
-import React from 'react';
 import './item.css';
+import Botao from "../../components/botao/Botao.jsx";
 
-const listapaciente = ({ name, grade }) => {
+const ListaPaciente = ({ nome, curso }) => {
   return (
     <div className="paciente">
       <span className="nome">{nome}</span>
       <span className="curso">{curso}</span>
-      <div className="patient-buttons">
-        <button className="btn-historico">Histórico</button>
-        <button className="btn-consultar">Consultar</button>
+      <div className="botoespaciente">
+        <Botao children="Histórico" variante="claro"/>
+        <Botao children="Consultar" variante="claro"/>
       </div>
     </div>
   );
 };
 
-export default listapaciente;
+export default ListaPaciente;
