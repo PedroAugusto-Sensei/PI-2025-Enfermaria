@@ -3,13 +3,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #cbe5ce; /* Verde claro */
+  background-color: #cbe5ce; 
   text-align: center;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
-/* Footer verde central */
+
 .footer {
     width: 100%;
   display: flex;
@@ -20,7 +20,7 @@
   margin: 0 auto;
 }
 
-/* Parte esquerda */
+
 .footer-left {
   display: flex;
   align-items: center;
@@ -31,8 +31,6 @@
   height: 75px;
 }
 
-
-/* Parte direita */
 .footer-right {
   text-align: right;
   font-size: 12px;
