@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../../components/Header/Header.jsx";
 import Footer from "../../../components/Footer/footer.jsx";
-import Botao from "../../components/botao/Botao.jsx";
+import Botao from "../../../components/botao/Botao.jsx";
 import "./cadastropaciente.css";
 
 export default function CadastroPaciente() {
