@@ -12,10 +12,9 @@ import raio from "../../assets/imagens/raio.png";
 
 import "./login.css";
 
-export default function CadastroEnfermeiro() {
+export default function LoginEnfermeiro() {
   return (
     <>
-    
       <div className="pagina_login">
         <img src={coracao} alt="" className="icon coracao" />
         <img src={cruz} alt="" className="icon cruz" />
