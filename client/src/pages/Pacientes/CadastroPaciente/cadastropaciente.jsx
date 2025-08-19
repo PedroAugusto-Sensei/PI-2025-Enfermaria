@@ -80,17 +80,3 @@ export default function CadastroPaciente() {
 )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
