@@ -2,13 +2,13 @@
 
 .botao {
   padding: 10px 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 19px;
   cursor: pointer;
   border: none;
   transition: 0.3s;
-   font-family: 'Itim', cursive;
+  font-family: 'Itim', cursive;
 }
 
 .claro {
@@ -17,7 +17,7 @@
 }
 
 .escuro {
-  background-color: #1a4b2c;
+  background-color: #48754F;
   color: white;
 }
 
@@ -26,3 +26,4 @@
   color: #1a4b2c;
   border: 2px solid #1a4b2c;
 }
+

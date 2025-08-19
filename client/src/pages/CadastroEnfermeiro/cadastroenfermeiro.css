@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
 * {
   margin: 0%;
-  padding: 0%;
 
 }
 
@@ -64,8 +65,8 @@
 .titulo {
   margin-top: 60px;
   margin-bottom: 30px;
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  font-size: 22px;
+ font-family: 'Itim', cursive;
+  font-size: 30px;
   color: #3d6334;
   font-weight: 600;
   text-align: center;
@@ -73,32 +74,37 @@
 }
 .form-cadastro {
   background-color: #bcd9bb;
-  border: 2px solid #3d6334;
-  border-radius: 16px;
-  padding: 40px 35px;
+  
+
   width: 320px;
   z-index: 1;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-
   display: flex;
   flex-direction: column;
   align-items: center; 
+  font-family: 'Itim', cursive;
+  gap: 10px;
+  border: 4px solid #3d6334;
+  border-radius: 10%;
+  padding: 30px 35px;
+  width: 320px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+
 }
 
 
 .form-cadastro h3 {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  font-weight: 600;
+font-weight: 200;
   color: #3d6334;
   margin-bottom: 25px;
-  font-size: 18px;
+  font-size: 26px;
 }
 
 
 .form-cadastro label {
   align-self: flex-start;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 500;
   margin-bottom: 6px;
   color: #3d6334;
@@ -111,7 +117,7 @@
   border-radius: 12px;
   border: none;
   margin-bottom: 18px;
-  font-size: 14px;
+  font-size: 20px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 

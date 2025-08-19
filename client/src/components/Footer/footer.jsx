@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css'; 
-import ifLogo from '../../assets/imagens/IFClogo.png';
+import ifLogo from '../../assets/imagens/IFC Concordia logo.png';
 
 export default function Footer() {
   console.log('ifLogo =>', ifLogo);

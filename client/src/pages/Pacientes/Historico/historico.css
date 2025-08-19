@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+*{
+  margin: 0%;
+}
+
+.container-principal {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4fbf5;
+}
+
+
+.top-bar {
+  font-family: 'Itim', cursive;
+  background-color: #3b6e4d;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+
+.titulo {
+  font-family: 'Itim', cursive;
+  text-align: center;
+  color: #3b6e4d;
+  margin: 20px 0;
+  font-size: 24px;
+}
+
+
+.paciente-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.paciente-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.paciente-nome {
+  font-family: 'Itim', cursive;
+  font-size: 16px;
+  color: #3b6e4d;
+  font-weight: 500;
+}
+
+.linha {
+  flex: 1;
+  border: none;
+  border-top: 2px solid #3b6e4d;
+}
+
+.lista-consultas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.consulta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #3b6e4d;
+  padding: 10px 0;
+}
+
+.consulta-data {
+  font-family: 'Itim', cursive;
+  font-size: 15px;
+  color: #3b6e4d;
+}
+
+.botao-analise {
+  font-family: 'Itim', cursive;
+  background-color: #d7e8d7;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #3b6e4d;
+  cursor: pointer;
+}
+
+.botao-analise:hover {
+  background-color: #bcd5bc;
+}
