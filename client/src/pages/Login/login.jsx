@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/footer.jsx";
 import Botao from "../../components/botao/Botao.jsx";
-
 import coracao from "../../assets/imagens/coracao.png";
 import cruz from "../../assets/imagens/cruz.png";
 import estetoscopio from "../../assets/imagens/estetoscopio.png";
@@ -15,8 +16,10 @@ export default function LoginEnfermeiro() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !senha) {
@@ -24,9 +27,44 @@ export default function LoginEnfermeiro() {
       return;
     }
 
-    setErro(""); // limpa erro
-    console.log("Login enviado:", { email, senha });
-    // aqui você pode chamar API ou redirecionar
+    setErro("");
+    setLoading(true);
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', { 
+        email, 
+        senha 
+      });
+      
+      console.log("Login realizado com sucesso:", response.data);
+      
+      // Armazenar dados do enfermeiro no localStorage
+      localStorage.setItem('enfermeiro', JSON.stringify(response.data.enfermeiro));
+      localStorage.setItem('isLoggedIn', 'true');
+      
+      // Mostrar mensagem de sucesso
+      alert(`Bem-vindo(a), ${response.data.enfermeiro.nome_enfermeiro}!`);
+      
+      // Redirecionar para a página de lista de pacientes
+      navigate('/listapacientes');
+      
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      
+      if (error.response) {
+        // Erro do servidor (4xx, 5xx)
+        const errorMessage = error.response.data.erro || "Erro ao fazer login. Tente novamente.";
+        setErro(errorMessage);
+      } else if (error.request) {
+        // Erro de conexão
+        setErro("Erro de conexão. Verifique se o servidor está rodando.");
+      } else {
+        // Outro erro
+        setErro("Erro inesperado. Tente novamente.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,19 +86,29 @@ export default function LoginEnfermeiro() {
           <input 
             type="email" 
             value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
+            placeholder="Digite seu email"
           />
 
           <label>Senha</label>
           <input 
             type="password" 
             value={senha} 
-            onChange={(e) => setSenha(e.target.value)} 
+            onChange={(e) => setSenha(e.target.value)}
+            disabled={loading}
+            placeholder="Digite sua senha"
           />
 
           {erro && <p className="erro-msg">{erro}</p>}
 
-          <Botao variante="escuro" type="submit">Entrar</Botao>
+          <Botao 
+            variante="escuro" 
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Entrando..." : "Entrar"}
+          </Botao>
         </form>
       </div>
       <Footer />
