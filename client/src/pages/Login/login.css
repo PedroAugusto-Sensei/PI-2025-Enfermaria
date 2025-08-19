@@ -115,3 +115,9 @@ font-family: 'Itim', cursive;
 .form-login button {
   margin-top: 5px;
 }
+.erro-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+}
