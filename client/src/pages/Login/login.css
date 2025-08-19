@@ -95,6 +95,7 @@ font-family: 'Itim', cursive;
   margin-bottom: 6px;
   color: #3d6334;
   width: 100%;
+  text-align: left;
 }
 
 .form-login input {
