@@ -95,6 +95,7 @@ font-family: 'Itim', cursive;
   margin-bottom: 6px;
   color: #3d6334;
   width: 100%;
+  text-align: left;
 }
 
 .form-login input {
@@ -114,4 +115,10 @@ font-family: 'Itim', cursive;
 
 .form-login button {
   margin-top: 5px;
+}
+.erro-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
 }
