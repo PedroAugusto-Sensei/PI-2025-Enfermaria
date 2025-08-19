@@ -2,6 +2,7 @@ from flask import jsonify, request
 from app.models import Enfermeiro, Paciente, Consulta, HistoricoConsultas, db
 from datetime import datetime
 import hashlib
+from werkzeug.security import check_password_hash, generate_password_hash
 
 def init_routes(app):
     
@@ -27,8 +28,8 @@ def init_routes(app):
         try:
             data = request.get_json()
             
-            # Hash da senha
-            senha_hash = hashlib.sha256(data['senha'].encode()).hexdigest()
+            # Hash da senha usando Werkzeug
+            senha_hash = generate_password_hash(data['senha'])
             
             novo_enfermeiro = Enfermeiro(
                 email=data['email'],
@@ -53,14 +54,11 @@ def init_routes(app):
         """Login para o Enfermeiro"""
         try:
             data = request.get_json()
-            senha_hash = hashlib.sha256(data['senha'].encode()).hexdigest()
             
-            enfermeiro = Enfermeiro.query.filter_by(
-                email=data['email'], 
-                senha=senha_hash
-            ).first()
+            # Buscar o enfermeiro pelo email
+            enfermeiro = Enfermeiro.query.filter_by(email=data['email']).first()
             
-            if enfermeiro:
+            if enfermeiro and check_password_hash(enfermeiro.senha, data['senha']):
                 return jsonify({
                     'mensagem': 'Login realizado com sucesso',
                     'enfermeiro': {
