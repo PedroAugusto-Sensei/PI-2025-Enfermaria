@@ -40,7 +40,7 @@ function App() {
           <Route path="/cadastropaciente" element={<ProtectedRoute children={<CadPaciente />} />} />
           <Route path="/cadastroenfermeiro" element={<PublicRoute children={<CadEnfermeiro />} />} />
           <Route path="/consulta" element={<ProtectedRoute children={<Consulta />} />} />
-          <Route path="/historico" element={<ProtectedRoute children={<Historico />} />} />
+          <Route path="/historico/:id" element={<ProtectedRoute children={<Historico />} />} />
           <Route path="/listapacientes" element={<ProtectedRoute children={<ListPacientes />} />} />
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 .botao {
+  margin: 0;
   padding: 10px 16px;
   border-radius: 10px;
   font-weight: 500;

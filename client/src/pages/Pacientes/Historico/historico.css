@@ -39,17 +39,12 @@
   margin-bottom: 30px;
 }
 
-.paciente-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
 .paciente-nome {
   font-family: 'Itim', cursive;
-  font-size: 16px;
+  font-size: 1.4rem;
   color: #3b6e4d;
   font-weight: 500;
+  margin-top: -1%;
 }
 
 .linha {
@@ -67,29 +62,56 @@
 
 .consulta-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  border-top: 2px solid #3b6e4d;
   padding: 10px 0;
+  margin: 0.5% 0.5% 0 0.5%;
+}
+
+.barra-separadora {
+  height: 2px;
+  width: 100%;
+  background-color: #3b6e4d;
 }
 
 .consulta-data {
   font-family: 'Itim', cursive;
-  font-size: 15px;
+  font-size: 1.4rem;
   color: #3b6e4d;
-}
-
-.botao-analise {
-  font-family: 'Itim', cursive;
-  background-color: #d7e8d7;
-  border: none;
-  padding: 5px 15px;
-  border-radius: 10px;
-  font-size: 14px;
-  color: #3b6e4d;
-  cursor: pointer;
 }
 
 .botao-analise:hover {
   background-color: #bcd5bc;
+}
+
+.loading {
+  font-family: 'Itim', cursive;
+  text-align: center;
+  color: #3b6e4d;
+  font-size: 18px;
+  margin: 50px 0;
+}
+
+.error {
+  font-family: 'Itim', cursive;
+  text-align: center;
+  color: #d32f2f;
+  font-size: 16px;
+  margin: 50px 0;
+  padding: 20px;
+  background-color: #ffebee;
+  border-radius: 8px;
+  border: 1px solid #ffcdd2;
+}
+
+.sem-consultas {
+  font-family: 'Itim', cursive;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
 }

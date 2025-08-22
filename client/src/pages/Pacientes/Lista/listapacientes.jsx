@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import Footer from "../../../components/Footer/footer.jsx";
 import Botao from "../../../components/botao/Botao.jsx";
 import Header from "../../../components/Header/Header.jsx";
@@ -13,6 +14,13 @@ export default function Pacientes() {
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Para navegar
+  const navigate = useNavigate();
+
+  const handleCadastrar = () => {
+    navigate('/cadastropaciente');
+  };
 
   // Buscar pacientes do backend
   const fetchPacientes = async () => {
@@ -67,7 +75,7 @@ export default function Pacientes() {
         <h2 className="titulo-pagina">Pacientes</h2>
 
         <div className="barra-acoes">
-          <Botao children="Cadastrar +" variante="escuro" />
+          <Botao children="Cadastrar +" variante="escuro" onClick={handleCadastrar}/>
           <SearchBar 
             placeholder="Pesquisar pacientes" 
             buttonLabel="Buscar"

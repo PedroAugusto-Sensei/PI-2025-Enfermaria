@@ -1,13 +1,17 @@
 /* Item.css */
 .paciente {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: center;  
   background-color: #f6fff7;
   border-top: 2px solid #2d7033;
   border-bottom: 2px solid #2d7033;
   padding: 10px 15px;
   color: #2d7033;
+}
+
+span {
+  max-width: fit-content;
 }
 
 .nome {
@@ -21,19 +25,8 @@
   white-space: nowrap;
 }
 
-/* Botões: por garantia 👌👍 */
-.botaoitem button {
-  background-color: #c7ebce;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 12px;
-  margin-left: 8px;
-  color: #2d7033;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botaoitem button:hover {
-  background-color: #a6dcb2;
+.botoespaciente {
+  display: flex;
+  width: fit-content;
+  gap: 0.8rem;
 }

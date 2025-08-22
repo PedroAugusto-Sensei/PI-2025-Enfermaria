@@ -75,14 +75,3 @@ h3 {
   margin-bottom: 20px;
   color: #3b5e3c;
 }
-
-.botao {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  background-color: #3b5e3c;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}

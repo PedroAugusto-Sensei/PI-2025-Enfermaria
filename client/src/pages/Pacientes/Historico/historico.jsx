@@ -1,15 +1,84 @@
 import React from "react";
 import "./Historico.css";
 import Footer from "../../../components/Footer/footer";
+import Botao from "../../../components/botao/Botao"
+import Header from "../../../components/Header/Header"
 import pacienteIcon from "../../../assets/imagens/paciente.png"; // Coloque o caminho correto
+import { Navigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
 export default function HistoricoPaciente() {
+  const { id } = useParams();
+  const [historico, setHistorico] = useState([]);
+  const [paciente, setPaciente] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        
+        // Buscar dados do paciente
+        const pacienteResponse = await axios.get(`http://localhost:5000/api/pacientes/${id}`);
+        setPaciente(pacienteResponse.data);
+        
+        // Buscar histórico do paciente
+        const historicoResponse = await axios.get(`http://localhost:5000/api/historico/paciente/${id}`);
+        setHistorico(historicoResponse.data);
+        
+      } catch (err) {
+        console.error('Erro ao buscar dados:', err);
+        setError('Erro ao carregar os dados do paciente');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchData();
+    }
+  }, [id]);
+
+  const formatarData = (dataString) => {
+    if (!dataString) return '';
+    const data = new Date(dataString);
+    return data.toLocaleDateString('pt-BR');
+  };
+
+  if (loading) {
+    return (
+      <div className="container-principal">
+        <header className="top-bar">
+          <span>Enfermaria IFC</span>
+        </header>
+        <main className="conteudo">
+          <div className="loading">Carregando...</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container-principal">
+        <header className="top-bar">
+          <span>Enfermaria IFC</span>
+        </header>
+        <main className="conteudo">
+          <div className="error">{error}</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="container-principal">
-      {/* Barra Superior */}
-      <header className="top-bar">
-        <span>Enfermaria IFC</span>
-      </header>
+      <Header></Header>
+
 
       {/* Conteúdo Principal */}
       <main className="conteudo">
@@ -19,29 +88,34 @@ export default function HistoricoPaciente() {
         {/* Info do Paciente */}
         <div className="paciente-info">
           <hr className="linha" />
-          <img src={pacienteIcon} alt="Paciente" className="paciente-icon" />
-          <span className="paciente-nome">Fulano Pramio da Silva</span>
+          <span className="paciente-nome">
+            {paciente ? paciente.nome_paciente : 'Paciente não encontrado'}
+          </span>
           <hr className="linha" />
         </div>
 
         {/* Lista de Consultas */}
         <div className="lista-consultas">
-          <div className="consulta-item">
-            <span className="consulta-data">Data: 11/09/2026</span>
-            <button className="botao-analise">Analisar</button>
-          </div>
-          <div className="consulta-item">
-            <span className="consulta-data">Data: 01/04/2026</span>
-            <button className="botao-analise">Analisar</button>
-          </div>
-          <div className="consulta-item">
-            <span className="consulta-data">Data: 25/03/2026</span>
-            <button className="botao-analise">Analisar</button>
-          </div>
+          {historico.length > 0 ? (
+            historico.map((consulta) => (
+              <>
+                <div key={consulta.id_consulta} className="consulta-item">
+                  <span className="consulta-data">
+                    Data: {formatarData(consulta.data_consulta)}
+                  </span>
+                  <Botao variante="claro" onClick={() => {}}>Analisar</Botao>
+                </div>
+                <div className="barra-separadora"></div>
+              </>
+            ))
+          ) : (
+            <div className="sem-consultas">
+              <p>Nenhuma consulta encontrada para este paciente.</p>
+            </div>
+          )}
         </div>
       </main>
 
-      {/* Rodapé */}
       <Footer />
     </div>
   );
