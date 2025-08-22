@@ -16,9 +16,9 @@ export default function Footer() {
             © 2025 grupo 3 PI. Todos os direitos reservados.
           </div>
           <div className="footer-pattern">
-            oioioioioioioioioioioioioioioioioioioioio<br />
-            ioioioioioioioioioioioioioioioioioioioioi<br />
-            oioioioioioioioioioioioioioioioioioioioioi
+            Contribuintes: Pedro Augusto, João Pramio,<br /> Ezequiel Chitolina,
+            André Gabiati, Carlos e Emily Lermen.<br />
+            Professores auxiliares: Danimar e Guilherme Sperb.
           </div>
         </div>
       </footer>
