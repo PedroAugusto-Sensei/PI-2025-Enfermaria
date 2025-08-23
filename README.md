@@ -25,7 +25,7 @@ pip install flask-sqlalchemy
 ### Rodar o projeto
 Serão necessários três terminais, um para rodar o FrontEnd, outro para o BackEnd e outro para popular a DataBase.
 
-### -------------------------------------------------------OBS-------------------------------------------------------
+### -------------------------------------------------OBS-------------------------------------------------
 #### Antes de rodar o main.py, você deve certificar-se de que:
 1. Tem um Banco de Dados PostgreSQL criado na sua máquina (PC). Em um terminal PSQL Shell, execute:
 ```
@@ -40,7 +40,7 @@ Serão necessários três terminais, um para rodar o FrontEnd, outro para o Back
 ```
    DATABASE_URL=postgresql://postgres:oi123@localhost:5432/enfermaria_db
 ```
-### -------------------------------------------------------OBS-------------------------------------------------------
+### -------------------------------------------------OBS-------------------------------------------------
 
 1. No primeiro terminal (para rodar o FrontEnd) execute:
 ```
