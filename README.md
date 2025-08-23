@@ -21,6 +21,8 @@ cd server
 pip install Flask
 pip install -U flask-cors
 pip install flask-sqlalchemy
+pip install dotenv
+pip insatll psycopg2
 ```
 ### Rodar o projeto
 Serão necessários três terminais, um para rodar o FrontEnd, outro para o BackEnd e outro para popular a DataBase.
