@@ -2,7 +2,7 @@
 
 .botao {
   margin: 0;
-  padding: 10px 16px;
+  padding: 9px 15px;
   border-radius: 10px;
   font-weight: 500;
   font-size: 19px;
@@ -10,8 +10,12 @@
   border: none;
   transition: 0.3s;
   font-family: 'Itim', cursive;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:4px;
 }
-
 .claro {
   background-color: #e6f4ea;
   color: #1a4b2c;
@@ -27,4 +31,5 @@
   color: #1a4b2c;
   border: 2px solid #1a4b2c;
 }
+
 
