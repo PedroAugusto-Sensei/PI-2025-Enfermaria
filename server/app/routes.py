@@ -213,7 +213,7 @@ def init_routes(app):
 
     @app.route('/api/consultas', methods=['POST'])
     def create_consulta():
-        """Criar uma nova consulta"""
+        """Criar uma nova consulta e salvar no histórico"""
         try:
             data = request.get_json()
             
@@ -234,12 +234,25 @@ def init_routes(app):
                 relatorio_consulta=data.get('relatorio_consulta')
             )
             
+            # Adicionar consulta à sessão
             db.session.add(nova_consulta)
             db.session.commit()
             
+            # Após salvar a consulta, criar entrada no histórico
+            novo_historico = HistoricoConsultas(
+                id_consulta=nova_consulta.id_consulta,
+                id_paciente=data['id_paciente'],
+                data_consulta=data_consulta,
+                nome_paciente=data['nome_paciente']
+            )
+            
+            db.session.add(novo_historico)
+            db.session.commit()
+            
             return jsonify({
-                'mensagem': 'Consulta criada com sucesso',
-                'id_consulta': nova_consulta.id_consulta
+                'mensagem': 'Consulta criada com sucesso e salva no histórico',
+                'id_consulta': nova_consulta.id_consulta,
+                'id_historico': novo_historico.id_historico
             }), 201
         except Exception as e:
             db.session.rollback()
@@ -265,6 +278,7 @@ def init_routes(app):
         try:
             historico = HistoricoConsultas.query.filter_by(id_paciente=id_paciente).all()
             return jsonify([{
+                'id_historico': h.id_historico,
                 'id_consulta': h.id_consulta,
                 'data_consulta': h.data_consulta.strftime('%Y-%m-%d') if h.data_consulta else None,
                 'nome_paciente': h.nome_paciente
@@ -282,6 +296,7 @@ def init_routes(app):
             data_consulta = datetime.strptime(data['data_consulta'], '%Y-%m-%d').date()
             
             novo_historico = HistoricoConsultas(
+                id_consulta=data['id_consulta'],
                 id_paciente=data['id_paciente'],
                 data_consulta=data_consulta,
                 nome_paciente=data['nome_paciente']
@@ -292,6 +307,7 @@ def init_routes(app):
             
             return jsonify({
                 'mensagem': 'Histórico criado com sucesso',
+                'id_historico': novo_historico.id_historico,
                 'id_consulta': novo_historico.id_consulta
             }), 201
         except Exception as e:

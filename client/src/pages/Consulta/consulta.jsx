@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./consulta.css";
 
 export default function ConsultaPaciente() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [paciente, setPaciente] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     dataConsulta: "",
     horaConsulta: "",
@@ -81,14 +87,38 @@ export default function ConsultaPaciente() {
     return `${numeros.slice(0, 2)}`;
   };
 
-  // Preencher data e hora automaticamente ao carregar
+  // Função para converter data de DD/MM/AAAA para YYYY-MM-DD
+  const converterDataParaAPI = (data) => {
+    if (!data) return null;
+    const partes = data.split('/');
+    if (partes.length === 3) {
+      return `${partes[2]}-${partes[1]}-${partes[0]}`;
+    }
+    return null;
+  };
+
+  // Carregar dados do paciente e preencher data/hora automaticamente
   useEffect(() => {
+    const carregarPaciente = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/pacientes/${id}`);
+        setPaciente(response.data);
+      } catch (error) {
+        console.error('Erro ao carregar paciente:', error);
+        alert('Erro ao carregar dados do paciente');
+      }
+    };
+
+    if (id) {
+      carregarPaciente();
+    }
+
     setFormData(prev => ({
       ...prev,
       dataConsulta: formatarDataAtual(),
       horaConsulta: formatarHoraAtual()
     }));
-  }, []);
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -124,10 +154,40 @@ export default function ConsultaPaciente() {
     setFormData((prev) => ({ ...prev, [name]: valorFormatado }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dados da consulta:", formData);
-    alert("Consulta salva com sucesso!");
+    setLoading(true);
+
+    try {
+      // Preparar dados para a API conforme a rota /api/consultas
+      const dadosConsulta = {
+        id_paciente: parseInt(id),
+        nome_paciente: paciente?.nome_paciente || '',
+        data_consulta: converterDataParaAPI(formData.dataConsulta),
+        hora_consulta: formData.horaConsulta,
+        pressao_arterial: formData.pressaoArterial || null,
+        temperatura: formData.temperatura ? parseFloat(formData.temperatura) : null,
+        saturacao_oxigenio: formData.saturacao ? parseInt(formData.saturacao) : null,
+        frequencia_cardiaca: formData.freqCardiaca ? parseInt(formData.freqCardiaca) : null,
+        frequencia_respiratoria: formData.freqRespiratoria ? parseInt(formData.freqRespiratoria) : null,
+        relatorio_consulta: formData.relatorio || null
+      };
+
+      // Enviar consulta para a API
+      const response = await axios.post("http://localhost:5000/api/consultas", dadosConsulta);
+      
+      console.log('Consulta salva com sucesso:', response.data);
+      alert("Consulta realizada com sucesso e salva no histórico!");
+      
+      // Redirecionar para a lista de pacientes
+      navigate("/listapacientes");
+      
+    } catch (error) {
+      console.error('Erro ao salvar consulta:', error);
+      alert("Erro ao salvar consulta. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -135,7 +195,7 @@ export default function ConsultaPaciente() {
       <h1 className="titulo-consulta">Consulta do Paciente</h1>
       <div className="nome-paciente">
         <div className="linha-decorativa"></div>
-        <span>Fulano Pramio</span>
+        <span>{paciente ? paciente.nome_paciente : 'Carregando...'}</span>
         <div className="linha-decorativa"></div>
       </div>
       
@@ -243,8 +303,8 @@ export default function ConsultaPaciente() {
           ></textarea>
         </div>
 
-        <button type="submit" className="botao-salvar">
-          Salvar Consulta
+        <button type="submit" className="botao-salvar" disabled={loading}>
+          {loading ? 'Salvando...' : 'Salvar Consulta'}
         </button>
       </form>
     </div>

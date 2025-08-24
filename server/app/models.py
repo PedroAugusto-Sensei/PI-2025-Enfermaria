@@ -48,8 +48,10 @@ class Paciente(db.Model):
 #     endereco VARCHAR(255) NOT NULL,
 #     email VARCHAR(120) NOT NULL UNIQUE,
 #     telefone VARCHAR(20) NOT NULL,
-#     nome_pai VARCHAR(100),
-#     nome_mae VARCHAR(100),
+#     nome_responsavel1 VARCHAR(100),
+#     telefone_responsavel1 CHAR(13) NULL,
+#     nome_responsavel2 VARCHAR(100),
+#     telefone_responsavel2 CHAR(13) NULL,
 #     fuma BOOLEAN DEFAULT FALSE,
 #     comorbidades TEXT
 # );
@@ -92,16 +94,17 @@ class Consulta(db.Model):
 class HistoricoConsultas(db.Model):
     __tablename__ = 'Historico_consultas'
 
-    id_consulta = db.Column(db.Integer, primary_key=True)
+    id_historico = db.Column(db.Integer, primary_key=True)
+    id_consulta = db.Column(db.Integer, db.ForeignKey('Consulta.id_consulta'), nullable=False)
     id_paciente = db.Column(db.Integer, db.ForeignKey('Pacientes.id_paciente'), nullable=False)
     data_consulta = db.Column(db.Date, nullable=False)
     nome_paciente = db.Column(db.String(100), nullable=False)
 
     # Verificando se a tabela foi criada
-    print('Tabela Historic criada')
+    print('Tabela Historico criada')
 
     def __repr__(self):
-        return f'<HistoricoConsultas {self.id_consulta} - {self.nome_paciente}>'
+        return f'<HistoricoConsultas {self.id_historico} - {self.nome_paciente}>'
 # CREATE TABLE Historico_consultas (
 #     id_consulta SERIAL PRIMARY KEY,
 #     id_paciente INTEGER NOT NULL REFERENCES Pacientes(id_paciente),

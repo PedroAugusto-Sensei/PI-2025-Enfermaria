@@ -39,7 +39,7 @@ function App() {
           <Route path="/" element={<PublicRoute children={<Login />} />} />
           <Route path="/cadastropaciente" element={<ProtectedRoute children={<CadPaciente />} />} />
           <Route path="/cadastroenfermeiro" element={<PublicRoute children={<CadEnfermeiro />} />} />
-          <Route path="/consulta" element={<ProtectedRoute children={<Consulta />} />} />
+          <Route path="/consulta/:id" element={<ProtectedRoute children={<Consulta />} />} />
           <Route path="/historico/:id" element={<ProtectedRoute children={<Historico />} />} />
           <Route path="/listapacientes" element={<ProtectedRoute children={<ListPacientes />} />} />
         </Routes>
