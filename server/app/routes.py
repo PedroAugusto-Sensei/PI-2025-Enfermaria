@@ -3,51 +3,11 @@ from app.models import Enfermeiro, Paciente, Consulta, HistoricoConsultas, db
 from datetime import datetime
 import hashlib
 from werkzeug.security import check_password_hash, generate_password_hash
+# import pytz # Biblioteca de fusos horários
 
 def init_routes(app):
     
     # ==================== Rotas de Enfermeiro ====================
-
-    @app.route('/api/enfermeiros/<int:id>', methods=['GET'])
-    def get_enfermeiro(id):
-        """Obter um enfermeiro específico pelo ID"""
-        try:
-            enfermeiro = Enfermeiro.query.get_or_404(id)
-            return jsonify({
-                'id_enfermeiro': enfermeiro.id_enfermeiro,
-                'email': enfermeiro.email,
-                'nome_enfermeiro': enfermeiro.nome_enfermeiro
-            }), 200
-        except Exception as e:
-            return jsonify({'erro': str(e)}), 500
-
-
-    @app.route('/api/enfermeiros', methods=['POST'])
-    def create_enfermeiro():
-        """Criar um novo enfermeiro"""
-        try:
-            data = request.get_json()
-            
-            # Hash da senha usando Werkzeug
-            senha_hash = generate_password_hash(data['senha'])
-            
-            novo_enfermeiro = Enfermeiro(
-                email=data['email'],
-                senha=senha_hash,
-                nome_enfermeiro=data['nome_enfermeiro']
-            )
-            
-            db.session.add(novo_enfermeiro)
-            db.session.commit()
-            
-            return jsonify({
-                'mensagem': 'Enfermeiro criado com sucesso',
-                'id_enfermeiro': novo_enfermeiro.id_enfermeiro
-            }), 201
-        except Exception as e:
-            db.session.rollback()
-            return jsonify({'erro': str(e)}), 500
-
 
     @app.route('/api/login', methods=['POST'])
     def login_enfermeiro():
@@ -153,17 +113,17 @@ def init_routes(app):
             return jsonify({'erro': str(e)}), 500
 
 
-    @app.route('/api/pacientes/<int:id>', methods=['DELETE'])
-    def delete_paciente(id):
-        """Deletar um paciente"""
-        try:
-            paciente = Paciente.query.get_or_404(id)
-            db.session.delete(paciente)
-            db.session.commit()
-            return jsonify({'mensagem': 'Paciente deletado com sucesso'}), 200
-        except Exception as e:
-            db.session.rollback()
-            return jsonify({'erro': str(e)}), 500
+    # @app.route('/api/pacientes/<int:id>', methods=['DELETE'])
+    # def delete_paciente(id):
+    #     """Deletar um paciente"""
+    #     try:
+    #         paciente = Paciente.query.get_or_404(id)
+    #         db.session.delete(paciente)
+    #         db.session.commit()
+    #         return jsonify({'mensagem': 'Paciente deletado com sucesso'}), 200
+    #     except Exception as e:
+    #         db.session.rollback()
+    #         return jsonify({'erro': str(e)}), 500
 
 
     @app.route('/api/pacientes/buscar', methods=['GET'])
@@ -188,28 +148,6 @@ def init_routes(app):
 
 
     # ==================== Rotas de Consulta ====================
-    
-    @app.route('/api/consultas/<int:id>', methods=['GET'])
-    def get_consulta(id):
-        """Obter uma consulta específica pelo ID"""
-        try:
-            consulta = Consulta.query.get_or_404(id)
-            return jsonify({
-                'id_consulta': consulta.id_consulta,
-                'id_paciente': consulta.id_paciente,
-                'nome_paciente': consulta.nome_paciente,
-                'data_consulta': consulta.data_consulta.strftime('%Y-%m-%d') if consulta.data_consulta else None,
-                'hora_consulta': consulta.hora_consulta.strftime('%H:%M') if consulta.hora_consulta else None,
-                'pressao_arterial': consulta.pressao_arterial,
-                'temperatura': consulta.temperatura,
-                'saturacao_oxigenio': consulta.saturacao_oxigenio,
-                'frequencia_cardiaca': consulta.frequencia_cardiaca,
-                'frequencia_respiratoria': consulta.frequencia_respiratoria,
-                'relatorio_consulta': consulta.relatorio_consulta
-            }), 200
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
-
 
     @app.route('/api/consultas', methods=['POST'])
     def create_consulta():
@@ -259,17 +197,17 @@ def init_routes(app):
             return jsonify({'erro': str(e)}), 500
 
 
-    @app.route('/api/consultas/<int:id>', methods=['DELETE'])
-    def delete_consulta(id):
-        """Deletar uma consulta"""
-        try:
-            consulta = Consulta.query.get_or_404(id)
-            db.session.delete(consulta)
-            db.session.commit()
-            return jsonify({'mensagem': 'Consulta deletada com sucesso'}), 200
-        except Exception as e:
-            db.session.rollback()
-            return jsonify({'erro': str(e)}), 500
+    # @app.route('/api/consultas/<int:id>', methods=['DELETE'])
+    # def delete_consulta(id):
+    #     """Deletar uma consulta"""
+    #     try:
+    #         consulta = Consulta.query.get_or_404(id)
+    #         db.session.delete(consulta)
+    #         db.session.commit()
+    #         return jsonify({'mensagem': 'Consulta deletada com sucesso'}), 200
+    #     except Exception as e:
+    #         db.session.rollback()
+    #         return jsonify({'erro': str(e)}), 500
 
 
     @app.route('/api/historico/paciente/<int:id_paciente>', methods=['GET'])
@@ -284,34 +222,6 @@ def init_routes(app):
                 'nome_paciente': h.nome_paciente
             } for h in historico]), 200
         except Exception as e:
-            return jsonify({'erro': str(e)}), 500
-
-
-    @app.route('/api/historico', methods=['POST'])
-    def create_historico():
-        """Criar uma nova entrada no histórico de consultas"""
-        try:
-            data = request.get_json()
-            
-            data_consulta = datetime.strptime(data['data_consulta'], '%Y-%m-%d').date()
-            
-            novo_historico = HistoricoConsultas(
-                id_consulta=data['id_consulta'],
-                id_paciente=data['id_paciente'],
-                data_consulta=data_consulta,
-                nome_paciente=data['nome_paciente']
-            )
-            
-            db.session.add(novo_historico)
-            db.session.commit()
-            
-            return jsonify({
-                'mensagem': 'Histórico criado com sucesso',
-                'id_historico': novo_historico.id_historico,
-                'id_consulta': novo_historico.id_consulta
-            }), 201
-        except Exception as e:
-            db.session.rollback()
             return jsonify({'erro': str(e)}), 500
 
     return app

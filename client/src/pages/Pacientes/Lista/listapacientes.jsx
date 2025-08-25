@@ -5,7 +5,7 @@ import Footer from "../../../components/Footer/footer.jsx";
 import Botao from "../../../components/botao/Botao.jsx";
 import Header from "../../../components/Header/Header.jsx";
 import ListaPaciente from "../../../components/Item/item.jsx";
-import SearchBar from "../../../components/barrapesquisa/barrapesquisa.jsx";
+import BarraPesquisa from "../../../components/barrapesquisa/barrapesquisa.jsx";
 
 import "./listapacientes.css";
 
@@ -76,7 +76,7 @@ export default function Pacientes() {
 
         <div className="barra-acoes">
           <Botao children="Cadastrar +" variante="escuro" onClick={handleCadastrar}/>
-          <SearchBar 
+          <BarraPesquisa 
             placeholder="Pesquisar pacientes" 
             buttonLabel="Buscar"
             onSearch={handleSearch}

@@ -9,10 +9,11 @@ from app import create_app, db
 from app.models import Enfermeiro, Paciente, Consulta, HistoricoConsultas
 from werkzeug.security import generate_password_hash
 
+app = create_app()
+app.app_context().push()
+
 def popular_enfermeiros():
-    """Popula a tabela Enfermeiro com dados fictícios"""
     print("Populando tabela Enfermeiro...")
-    
     enfermeiros = [
         {
             'email': 'maria.silva@hospital.com',
@@ -25,18 +26,14 @@ def popular_enfermeiros():
             'nome_enfermeiro': 'João Santos'
         }
     ]
-    
     for enfermeiro_data in enfermeiros:
         enfermeiro = Enfermeiro(**enfermeiro_data)
         db.session.add(enfermeiro)
-    
     db.session.commit()
     print("Enfermeiros adicionados com sucesso!")
 
 def popular_pacientes():
-    """Popula a tabela Pacientes com dados fictícios"""
     print("Populando tabela Pacientes...")
-    
     pacientes = [
         {
             'nome_paciente': 'Ana Oliveira',
@@ -63,22 +60,16 @@ def popular_pacientes():
             'comorbidades': 'Asma brônquica'
         }
     ]
-    
     for paciente_data in pacientes:
         paciente = Paciente(**paciente_data)
         db.session.add(paciente)
-    
     db.session.commit()
     print("Pacientes adicionados com sucesso!")
 
 def popular_consultas():
-    """Popula a tabela Consulta com dados fictícios"""
     print("Populando tabela Consulta...")
-    
-    # Primeiro, vamos buscar os IDs dos pacientes criados
     paciente1 = Paciente.query.filter_by(email='ana.oliveira@email.com').first()
     paciente2 = Paciente.query.filter_by(email='pedro.costa@email.com').first()
-    
     consultas = [
         {
             'id_paciente': paciente1.id_paciente,
@@ -105,92 +96,61 @@ def popular_consultas():
             'relatorio_consulta': 'Paciente com sintomas de crise asmática leve. Prescrito broncodilatador e orientações sobre cessação do tabagismo.'
         }
     ]
-    
     for consulta_data in consultas:
         consulta = Consulta(**consulta_data)
         db.session.add(consulta)
-    
     db.session.commit()
     print("Consultas adicionadas com sucesso!")
 
 def popular_historico_consultas():
-    """Popula a tabela Historico_consultas com dados fictícios"""
     print("Populando tabela Historico_consultas...")
-    
-    # Buscar os pacientes e consultas criadas
     paciente1 = Paciente.query.filter_by(email='ana.oliveira@email.com').first()
     paciente2 = Paciente.query.filter_by(email='pedro.costa@email.com').first()
-    
+    consulta1 = Consulta.query.filter_by(id_paciente=paciente1.id_paciente).first()
+    consulta2 = Consulta.query.filter_by(id_paciente=paciente2.id_paciente).first()
     historicos = [
         {
+            'id_consulta': consulta1.id_consulta,
             'id_paciente': paciente1.id_paciente,
-            'data_consulta': date(2024, 8, 15),
+            'data_consulta': consulta1.data_consulta,
             'nome_paciente': paciente1.nome_paciente
         },
         {
+            'id_consulta': consulta2.id_consulta,
             'id_paciente': paciente2.id_paciente,
-            'data_consulta': date(2024, 8, 16),
+            'data_consulta': consulta2.data_consulta,
             'nome_paciente': paciente2.nome_paciente
         }
     ]
-    
     for historico_data in historicos:
         historico = HistoricoConsultas(**historico_data)
         db.session.add(historico)
-    
     db.session.commit()
     print("Histórico de consultas adicionado com sucesso!")
 
 def popular_todas_tabelas():
-    """Função principal para popular todas as tabelas"""
     try:
-        # Create Flask app
-        app = create_app()
-        
-        with app.app_context():
-            # Criar todas as tabelas se não existirem
-            db.create_all()
-            
-            # Popular as tabelas na ordem correta (respeitando foreign keys)
-            popular_enfermeiros()
-            popular_pacientes()
-            popular_consultas()
-            popular_historico_consultas()
-            
-            print("\n✅ Todas as tabelas foram populadas com sucesso!")
-            
-            # Verificar se os dados foram inseridos corretamente
-            print("\n📊 Resumo dos dados inseridos:")
-            print(f"- Enfermeiros: {Enfermeiro.query.count()}")
-            print(f"- Pacientes: {Paciente.query.count()}")
-            print(f"- Consultas: {Consulta.query.count()}")
-            print(f"- Histórico: {HistoricoConsultas.query.count()}")
-            
+        popular_enfermeiros()
+        popular_pacientes()
+        popular_consultas()
+        popular_historico_consultas()
     except Exception as e:
-        print(f"❌ Erro ao popular as tabelas: {e}")
+        print(f"Erro ao popular tabelas: {e}")
         db.session.rollback()
 
 def limpar_tabelas():
-    """Função auxiliar para limpar todas as tabelas (usar com cuidado!)"""
     try:
-        app = create_app()
-        
-        with app.app_context():
-            db.session.query(HistoricoConsultas).delete()
-            db.session.query(Consulta).delete()
-            db.session.query(Paciente).delete()
-            db.session.query(Enfermeiro).delete()
-            db.session.commit()
-            print("🧹 Todas as tabelas foram limpas!")
+        db.session.query(HistoricoConsultas).delete()
+        db.session.query(Consulta).delete()
+        db.session.query(Paciente).delete()
+        db.session.query(Enfermeiro).delete()
+        db.session.commit()
+        print("Todas as tabelas foram limpas!")
     except Exception as e:
-        print(f"❌ Erro ao limpar as tabelas: {e}")
+        print(f"Erro ao limpar tabelas: {e}")
         db.session.rollback()
 
 if __name__ == "__main__":
     print("🏥 Script de População do Banco de Dados")
     print("=" * 50)
-    
-    # Descomente a linha abaixo se quiser limpar as tabelas antes de popular
-    # limpar_tabelas()
-    
-    popular_todas_tabelas()
+    # limpar_tabelas()  # Descomente se quiser

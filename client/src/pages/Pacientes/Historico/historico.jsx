@@ -43,16 +43,17 @@ export default function HistoricoPaciente() {
 
   const formatarData = (dataString) => {
     if (!dataString) return '';
-    const data = new Date(dataString);
+    
+    const [ano, mes, dia] = dataString.split('-');
+    const data = new Date(ano, mes - 1, dia);
+
     return data.toLocaleDateString('pt-BR');
   };
 
   if (loading) {
     return (
       <div className="container-principal">
-        <header className="top-bar">
-          <span>Enfermaria IFC</span>
-        </header>
+        <Header></Header>
         <main className="conteudo">
           <div className="loading">Carregando...</div>
         </main>
@@ -64,9 +65,7 @@ export default function HistoricoPaciente() {
   if (error) {
     return (
       <div className="container-principal">
-        <header className="top-bar">
-          <span>Enfermaria IFC</span>
-        </header>
+        <Header></Header>
         <main className="conteudo">
           <div className="error">{error}</div>
         </main>
