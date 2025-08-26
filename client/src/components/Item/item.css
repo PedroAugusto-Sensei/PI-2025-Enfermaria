@@ -1,32 +1,32 @@
-/* Item.css */
 .paciente {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;  
-  background-color: #f6fff7;
+  align-items: center;
   border-top: 2px solid #2d7033;
   border-bottom: 2px solid #2d7033;
   padding: 10px 15px;
+  background-color: #f6fff7;
   color: #2d7033;
 }
 
-span {
-  max-width: fit-content;
+.coluna {
+  flex: 1;             
+  text-align: center;    
 }
 
 .nome {
   font-weight: bold;
-  flex: 1;
+  flex: 2;             
 }
 
 .curso {
-  margin: 0 20px;
   font-size: 14px;
-  white-space: nowrap;
+  flex: 2;              
+  white-space: nowrap;  
 }
 
 .botoespaciente {
+  flex: 1;
   display: flex;
-  width: fit-content;
+  justify-content: center;
   gap: 0.8rem;
 }
