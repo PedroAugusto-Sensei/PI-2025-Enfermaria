@@ -10,7 +10,7 @@ const Header = () => {
 
   const handleVoltar = () => {
     if (location.pathname === "/listapacientes") {
-      // Já está na página inicial, não faz nada
+      
       return;
     } else {
       navigate(-1); // Volta para a página anterior
@@ -18,11 +18,12 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header" style={{justifyContent: location.pathname === "/listapacientes" ? "center" : "space-envely"}}>
       <h1>Enfermaria IFC</h1>
         <Botao 
           onClick={handleVoltar}
           variante="claro"
+          style={{ display: location.pathname === "/listapacientes" ? "none" : "inline-flex" }}
         >
           ← Voltar
         </Botao>
