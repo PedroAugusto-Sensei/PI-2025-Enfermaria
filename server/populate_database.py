@@ -154,3 +154,4 @@ if __name__ == "__main__":
     print("🏥 Script de População do Banco de Dados")
     print("=" * 50)
     # limpar_tabelas()  # Descomente se quiser
+    popular_todas_tabelas()

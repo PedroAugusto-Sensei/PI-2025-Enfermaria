@@ -1,41 +1,149 @@
-#root {
+body {
+  font-family: Arial, sans-serif;
+  background: #f6fcf6; /* fundo verde bem claro */
+  color: #2f5e39; /* verde suave */
+  margin: 0;
+  padding: 2rem;
+}
+
+/* Container principal */
+.consulta-container {
+  max-width: 800px;
   margin: 0 auto;
+  padding: 1rem 2rem;
+  background: #f6fcf6; /* fundo igual ao body */
+  border-radius: 12px;
+}
+
+/* Título */
+.titulo-consulta {
+  font-size: 1.6rem;
   text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2f5e39;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Nome do paciente com linha decorativa */
+.nome-paciente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #2f5e39;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.linha-decorativa {
+  flex: 1;
+  height: 2px;
+  background: #2f5e39;
+  margin: 0 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Formulário */
+.consulta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.card {
-  padding: 2em;
+/* Linha com data/hora + vitais */
+.linha-superior {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.read-the-docs {
-  color: #888;
+/* Data e hora */
+.campo-data-hora {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 160px;
 }
 
+.campo-data-hora input {
+  border: none;
+  background: #e6e6e6;
+  border-radius: 10px;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #2f5e39;
+}
+
+/* Caixa de informações vitais */
+.campo-info-vitais {
+  flex: 1;
+  background: #e6e6e6;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.info-vitais {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.campo-vital {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.campo-vital label {
+  font-size: 0.9rem;
+  color: #2f5e39;
+}
+
+.campo-vital-input {
+  background: #f6fcf6;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 120px;
+  text-align: center;
+  color: #2f5e39;
+}
+
+/* Relatório */
+.campo-relatorio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo-relatorio-textarea {
+  min-height: 200px;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 2px solid #e6e6e6;
+  background: #f6fcf6;
+  color: #2f5e39;
+  resize: none;
+  font-size: 1rem;
+}
+
+/* Botão */
+.botao-salvar {
+  background: #2f5e39;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.botao-salvar:hover {
+  background: #244a2e;
+}
+
+.botao-salvar:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
