@@ -2,6 +2,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./consulta.css";
+import Header from "../../components/Header/Header.jsx";
 
 export default function ConsultaPaciente() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export default function ConsultaPaciente() {
     freqRespiratoria: "",
     relatorio: ""
   });
-
+    
   // Função para formatar data atual
   const formatarDataAtual = () => {
     const hoje = new Date();
@@ -59,12 +60,13 @@ export default function ConsultaPaciente() {
   };
 
   // Máscara para temperatura (XX.X°C)
-  const formatarTemperatura = (valor) => {
-    const numeros = valor.replace(/[^\d.]/g, '');
-    if (numeros.length <= 2) return numeros;
-    if (numeros.length <= 4) return `${numeros.slice(0, 2)}.${numeros.slice(2)}`;
-    return `${numeros.slice(0, 2)}.${numeros.slice(2, 4)}`;
-  };
+const formatarTemperatura = (valor) => {
+  if (!valor) return "";
+  let numeros = valor.replace(/\D/g, "");
+  if (numeros.length <= 2) return numeros;
+  if (numeros.length === 3) return `${numeros.slice(0, 2)}.${numeros.slice(2)}`;
+  return `${numeros.slice(0, 2)}.${numeros.slice(2, 4)}`;
+};
 
   // Máscara para saturação (XX%)
   const formatarSaturacao = (valor) => {

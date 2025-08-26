@@ -52,6 +52,7 @@ export default function CadastroPaciente() {
 
     } catch (error) {
       alert("Erro ao cadastrar paciente!");
+      console.error(error);
     }
   };
 
