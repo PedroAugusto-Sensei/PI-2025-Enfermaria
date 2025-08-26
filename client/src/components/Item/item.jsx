@@ -15,9 +15,9 @@ const ListaPaciente = ({ id, nome, curso }) => {
 
   return (
     <div className="paciente">
-      <span className="nome">{nome}</span>
-      <span className="curso">{curso}</span>
-      <div className="botoespaciente">
+      <div className="coluna nome">{nome}</div>
+      <div className="coluna curso">{curso}</div>
+      <div className="coluna botoespaciente">
         <Botao children="Histórico" variante="claro" onClick={handleHistorico}/>
         <Botao children="Consultar" variante="claro" onClick={handleConsultar}/>
       </div>
