@@ -193,6 +193,8 @@ const formatarTemperatura = (valor) => {
   };
 
   return (
+    <>
+    <Header />
     <div className="consulta-container">
       <h1 className="titulo-consulta">Consulta do Paciente</h1>
       <div className="nome-paciente">
@@ -310,5 +312,6 @@ const formatarTemperatura = (valor) => {
         </button>
       </form>
     </div>
+    </>
   );
 }
