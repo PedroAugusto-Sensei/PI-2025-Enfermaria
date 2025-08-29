@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./analiseconsulta.css";
+import Header from "../../../components/Header/Header";
 
 export default function VisualizarConsulta() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [consulta, setConsulta] = useState(null);
 
   useEffect(() => {
@@ -25,6 +25,9 @@ export default function VisualizarConsulta() {
   }, [id]);
 
   return (
+    <>
+    <Header />
+
     <div className="consulta-container">  
       <h1 className="titulo-consulta">Detalhes da Consulta</h1>
       
@@ -82,5 +85,6 @@ export default function VisualizarConsulta() {
         </div>
       </div>
     </div>
+    </>
   );
 }

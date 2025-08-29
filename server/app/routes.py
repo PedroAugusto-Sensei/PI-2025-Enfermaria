@@ -209,6 +209,28 @@ def init_routes(app):
     #         db.session.rollback()
     #         return jsonify({'erro': str(e)}), 500
 
+    @app.route('/api/consultas/<int:id>', methods=['GET'])
+    def get_consulta(id):
+        """Obter uma consulta específica pelo ID"""
+        try:
+            consulta = Consulta.query.get_or_404(id)
+            return jsonify({
+                'id_consulta': consulta.id_consulta,
+                'id_paciente': consulta.id_paciente,
+                'nome_paciente': consulta.nome_paciente,
+                'data_consulta': consulta.data_consulta.strftime('%Y-%m-%d') if consulta.data_consulta else None,
+                'hora_consulta': consulta.hora_consulta.strftime('%H:%M') if consulta.hora_consulta else None,
+                'pressao_arterial': consulta.pressao_arterial,
+                'temperatura': consulta.temperatura,
+                'saturacao_oxigenio': consulta.saturacao_oxigenio,
+                'frequencia_cardiaca': consulta.frequencia_cardiaca,
+                'frequencia_respiratoria': consulta.frequencia_respiratoria,
+                'relatorio_consulta': consulta.relatorio_consulta
+            }), 200 
+        except Exception as e:
+            return jsonify({'erro': str(e)}), 500
+
+
 
     @app.route('/api/historico/paciente/<int:id_paciente>', methods=['GET'])
     def get_historico_paciente(id_paciente):
