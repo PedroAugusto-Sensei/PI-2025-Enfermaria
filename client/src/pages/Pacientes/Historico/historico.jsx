@@ -108,33 +108,39 @@ export default function HistoricoPaciente() {
         </div>
 
         <div className="infos-paciente-container">
-          <h2 className="infos-titulo">Informações do Paciente</h2>
+          <h2>Informações do Paciente</h2>
 
-          <div className="infos-linha">
-            <p><strong>Data de Nascimento:</strong> {formatarData(paciente.data_nascimento) || 'N/A'}</p>
-            <p><strong>Idade:</strong> {idadeAtual(paciente.data_nascimento) || 'N/A'}</p>
-            <p><strong>Sexo:</strong> {paciente.sexo || 'N/A'}</p>
+          <div className="infos-paciente">
+            <div className="infos-linha">
+              <p><strong>Data de Nascimento:</strong> {formatarData(paciente.data_nascimento) || 'N/A'}</p>
+              <p><strong>Idade:</strong> {idadeAtual(paciente.data_nascimento) || 'N/A'}</p>
+              <p><strong>Sexo:</strong> {paciente.sexo || 'N/A'}</p>
+            </div>
+
+            <div className="infos-linha">
+              <p><strong>Telefone:</strong> {paciente.telefone || 'N/A'}</p>
+              <p><strong>Email:</strong> {paciente.email || 'N/A'}</p>
+            </div>
+
+            <div className="infos-linha">
+              <p><strong>Nome pai:</strong> {paciente.nome_pai || 'N/A'}</p>
+              <p><strong>Nome mãe:</strong> {paciente.nome_mae || 'N/A'}</p>
+            </div>
+
+            <div className="infos-linha">
+              <p><strong>Endereço:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>Fuma:</strong> {paciente.fuma ? 'Sim' : 'Não'}</p>
+            </div>
+
+            <div className="infos-linha">
+              <p><strong>Comorbidades:</strong> {paciente.comorbidades || 'N/A'}</p>
+            </div>
           </div>
 
-          <div className="infos-linha">
-            <p><strong>Telefone:</strong> {paciente.telefone || 'N/A'}</p>
-            <p><strong>Email:</strong> {paciente.email || 'N/A'}</p>
-          </div>
-
-           <div className="infos-linha">
-            <p><strong>Nome pai:</strong> {paciente.nome_pai || 'N/A'}</p>
-            <p><strong>Nome mãe:</strong> {paciente.nome_mae || 'N/A'}</p>
-          </div>
-
-          <div className="infos-linha">
-            <p><strong>Endereço:</strong> {paciente.endereco || 'N/A'}</p>
-            <p><strong>Fuma:</strong> {paciente.fuma ? 'Sim' : 'Não'}</p>
-          </div>
-
-          <div className="infos-linha">
-            <p><strong>Comorbidades:</strong> {paciente.comorbidades || 'N/A'}</p>
-          </div>
+          <hr/>
         </div>
+
+        
 
         <div className="titulo-hist-container">
           <h2 className="titulo-hist">Histócio de Consultas</h2>

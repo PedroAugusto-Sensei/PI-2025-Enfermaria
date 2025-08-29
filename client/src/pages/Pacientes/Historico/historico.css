@@ -10,22 +10,12 @@
   background-color: #f4fbf5;
 }
 
-.top-bar {
-  font-family: 'Itim', cursive;
-  background-color: #3b6e4d;
-  padding: 15px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-}
-
-
 .titulo {
   font-family: 'Itim', cursive;
+  font-size: 1.6rem;
   text-align: center;
   color: #3b6e4d;
-  margin: 20px 0;
-  font-size: 24px;
+  margin: 1.5rem;
 }
 
 
@@ -57,13 +47,29 @@
 .infos-paciente-container h2 {
   font-family: 'Segoe UI', sans-serif;
   color: #3b6e4d;
-  margin: 5px 0;
+  margin-bottom: 1.8rem;
   font-size: 1.8rem;
+}
+
+.infos-paciente-container hr {
+  width: 40%;
+  border: none;
+  border-top: 2px solid #3b6e4d;
+  margin-bottom: 1.8rem;
+  margin-top: 3rem;
+}
+
+.infos-paciente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
 .infos-linha {
   display: flex;
-  gap: 20px;
+  gap: 2.4rem;
 }
 
 .infos-linha p {
@@ -76,11 +82,17 @@
   .infos-linha {
     flex-direction: column;
     align-items: center;
+    gap: 0.2rem;
   }
 
   .infos-linha p {
     font-size: 1.3rem;
   }
+
+  .infos-paciente-container hr {
+    width: 80%;
+  }
+
 }
 
 .titulo-hist-container {

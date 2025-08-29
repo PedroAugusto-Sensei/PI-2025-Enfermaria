@@ -66,7 +66,7 @@
 body {
   min-height: 100vh;
   position: relative;
-  padding-bottom: 120px;
+  padding-bottom: 16rem;
   box-sizing: border-box;
 }
 
