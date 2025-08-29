@@ -3,7 +3,6 @@ import './Footer.css';
 import ifLogo from '../../assets/imagens/IFC Concordia logo.png';
 
 export default function Footer() {
-  console.log('ifLogo =>', ifLogo);
   return (
     <div className="footer-container">
       <footer className="footer">
@@ -16,8 +15,8 @@ export default function Footer() {
             © 2025 grupo 3 PI. Todos os direitos reservados.
           </div>
           <div className="footer-pattern">
-            Contribuintes: Pedro Augusto, João Pramio,<br /> Ezequiel Chitolina,
-            André Gabiati, Carlos e Emily Lermen.<br />
+            Contribuintes: Pedro Augusto, João Pramio,<br /> 
+            Ezequiel Chitolina, André Gabiati, Carlos e Emily Lermen.<br />
             Professores auxiliares: Danimar e Guilherme Sperb.
           </div>
         </div>
@@ -25,3 +24,4 @@ export default function Footer() {
     </div>
   );
 }
+  

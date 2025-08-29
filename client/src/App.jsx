@@ -7,6 +7,7 @@ import Consulta from "./pages/Consulta/consulta"
 import Historico from "./pages/Pacientes/Historico/historico";
 import ListPacientes from "./pages/Pacientes/Lista/listapacientes";
 import CadEnfermeiro from "./pages/CadastroEnfermeiro/cadastroenfermeiro";
+import Analise from "./pages/Pacientes/AnaliseConsulta/analiseconsulta"
 
 
 // Componente para proteger rotas privadas
@@ -42,6 +43,7 @@ function App() {
           <Route path="/consulta/:id" element={<ProtectedRoute children={<Consulta />} />} />
           <Route path="/historico/:id" element={<ProtectedRoute children={<Historico />} />} />
           <Route path="/listapacientes" element={<ProtectedRoute children={<ListPacientes />} />} />
+          <Route path="/analise/:id" element={<ProtectedRoute children={<Analise />} />} />
         </Routes>
       </BrowserRouter>
       <Footer />

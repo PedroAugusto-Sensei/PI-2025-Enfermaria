@@ -23,6 +23,6 @@ const ListaPaciente = ({ id, nome, curso }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ListaPaciente;

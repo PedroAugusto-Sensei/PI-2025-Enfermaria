@@ -3,10 +3,10 @@ import "./Historico.css";
 import Footer from "../../../components/Footer/footer";
 import Botao from "../../../components/botao/Botao"
 import Header from "../../../components/Header/Header"
-import pacienteIcon from "../../../assets/imagens/paciente.png"; // Coloque o caminho correto
 import { Navigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"; // já importa aqui em cima
 
 export default function HistoricoPaciente() {
   const { id } = useParams();
@@ -14,6 +14,7 @@ export default function HistoricoPaciente() {
   const [paciente, setPaciente] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,7 +103,9 @@ export default function HistoricoPaciente() {
                   <span className="consulta-data">
                     Data: {formatarData(consulta.data_consulta)}
                   </span>
-                  <Botao variante="claro" onClick={() => {}}>Analisar</Botao>
+                  <Botao 
+                    variante="claro" 
+                    onClick={() => navigate(`/analise/${consulta.id_consulta}`)}>Analisar</Botao>
                 </div>
                 <div className="barra-separadora"></div>
               </>
