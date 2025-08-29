@@ -51,10 +51,24 @@ export default function HistoricoPaciente() {
     return data.toLocaleDateString('pt-BR');
   };
 
+  const idadeAtual = (dataNascimento) => {
+    const [ano, mes, dia] = dataNascimento.split('-');
+    const nascimento = new Date(ano, mes, dia);
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    console.log(hoje.getFullYear(), nascimento.getFullYear())
+    const m = hoje.getMonth() - nascimento.getMonth();
+
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
+
+    return idade;
+  }
+
   if (loading) {
     return (
       <div className="container-principal">
-        <Header></Header>
         <main className="conteudo">
           <div className="loading">Carregando...</div>
         </main>
@@ -66,7 +80,6 @@ export default function HistoricoPaciente() {
   if (error) {
     return (
       <div className="container-principal">
-        <Header></Header>
         <main className="conteudo">
           <div className="error">{error}</div>
         </main>
@@ -77,16 +90,16 @@ export default function HistoricoPaciente() {
 
   return (
     <div className="container-principal">
-      <Header></Header>
+      <Header />
 
 
       {/* Conteúdo Principal */}
       <main className="conteudo">
-        {/* Título */}
+
         <h1 className="titulo">Histórico do Paciente</h1>
 
         {/* Info do Paciente */}
-        <div className="paciente-info">
+        <div className="paciente-nome-container ">
           <hr className="linha" />
           <span className="paciente-nome">
             {paciente ? paciente.nome_paciente : 'Paciente não encontrado'}
@@ -94,11 +107,45 @@ export default function HistoricoPaciente() {
           <hr className="linha" />
         </div>
 
+        <div className="infos-paciente-container">
+          <h2 className="infos-titulo">Informações do Paciente</h2>
+
+          <div className="infos-linha">
+            <p><strong>Data de Nascimento:</strong> {formatarData(paciente.data_nascimento) || 'N/A'}</p>
+            <p><strong>Idade:</strong> {idadeAtual(paciente.data_nascimento) || 'N/A'}</p>
+            <p><strong>Sexo:</strong> {paciente.sexo || 'N/A'}</p>
+          </div>
+
+          <div className="infos-linha">
+            <p><strong>Telefone:</strong> {paciente.telefone || 'N/A'}</p>
+            <p><strong>Email:</strong> {paciente.email || 'N/A'}</p>
+          </div>
+
+           <div className="infos-linha">
+            <p><strong>Nome pai:</strong> {paciente.nome_pai || 'N/A'}</p>
+            <p><strong>Nome mãe:</strong> {paciente.nome_mae || 'N/A'}</p>
+          </div>
+
+          <div className="infos-linha">
+            <p><strong>Endereço:</strong> {paciente.endereco || 'N/A'}</p>
+            <p><strong>Fuma:</strong> {paciente.fuma ? 'Sim' : 'Não'}</p>
+          </div>
+
+          <div className="infos-linha">
+            <p><strong>Comorbidades:</strong> {paciente.comorbidades || 'N/A'}</p>
+          </div>
+        </div>
+
+        <div className="titulo-hist-container">
+          <h2 className="titulo-hist">Histócio de Consultas</h2>
+        </div>
+
         {/* Lista de Consultas */}
         <div className="lista-consultas">
           {historico.length > 0 ? (
             historico.map((consulta) => (
               <>
+                <div className="barra-separadora"></div>
                 <div key={consulta.id_consulta} className="consulta-item">
                   <span className="consulta-data">
                     Data: {formatarData(consulta.data_consulta)}
@@ -107,7 +154,6 @@ export default function HistoricoPaciente() {
                     variante="claro" 
                     onClick={() => navigate(`/analise/${consulta.id_consulta}`)}>Analisar</Botao>
                 </div>
-                <div className="barra-separadora"></div>
               </>
             ))
           ) : (

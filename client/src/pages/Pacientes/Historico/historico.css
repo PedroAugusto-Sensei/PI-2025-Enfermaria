@@ -7,10 +7,8 @@
 .container-principal {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   background-color: #f4fbf5;
 }
-
 
 .top-bar {
   font-family: 'Itim', cursive;
@@ -31,20 +29,70 @@
 }
 
 
-.paciente-info {
+.paciente-nome-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .paciente-nome {
   font-family: 'Itim', cursive;
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #3b6e4d;
   font-weight: 500;
   margin-top: -1%;
+}
+
+.infos-paciente-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  width: 100%;
+}
+
+.infos-paciente-container h2 {
+  font-family: 'Segoe UI', sans-serif;
+  color: #3b6e4d;
+  margin: 5px 0;
+  font-size: 1.8rem;
+}
+
+.infos-linha {
+  display: flex;
+  gap: 20px;
+}
+
+.infos-linha p {
+  font-family: 'Itim', cursive;
+  color: #3b6e4d;
+  font-size: 1.4rem;
+}
+
+@media (width < 600px) {
+  .infos-linha {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infos-linha p {
+    font-size: 1.3rem;
+  }
+}
+
+.titulo-hist-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.875rem;
+  margin-top: 3rem;
+}
+
+.titulo-hist {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.8rem;
 }
 
 .linha {
@@ -55,7 +103,7 @@
 
 .lista-consultas {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 15px;
   padding: 0 20px;
 }
