@@ -1,7 +1,4 @@
 .footer-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   background-color: #cbe5ce; 
   text-align: center;
@@ -62,5 +59,28 @@
 
   .if-logo {
     height: 60px; 
+  }
+}
+
+/* NOVO: Footer grudado em baixo apenas se o conteúdo não ultrapassar a tela */
+body {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+/* Se a página for maior que a tela, o footer vai para o final do conteúdo */
+@media (min-width: 601px) {
+  .footer-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
 }
