@@ -20,6 +20,23 @@ export default function CadastroPaciente() {
 
   const navigate = useNavigate();
 
+  // máscara para telefone
+  const handleTelefoneChange = (e) => {
+    let value = e.target.value.replace(/\D/g, ""); // remove não números
+
+    if (value.length > 11) {
+      value = value.slice(0, 11);
+    }
+
+    if (value.length <= 10) {
+      value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else {
+      value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+
+    setTelefone(value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,7 +85,12 @@ export default function CadastroPaciente() {
               <div className="linha">
                 <div className="campo">
                   <label>Nome completo</label>
-                  <input type="text" value={nome_paciente} onChange={e => setNomePaciente(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="Ex: João da Silva"
+                    value={nome_paciente}
+                    onChange={e => setNomePaciente(e.target.value)}
+                  />
                 </div>
                 <div className="campo">
                   <label>Sexo</label>
@@ -79,39 +101,68 @@ export default function CadastroPaciente() {
                     <option value="Outro">Outro</option>
                   </select>
                 </div>
+              </div>
+              <div className="linha">
+                <div className="campo">
+                  <label>Endereço</label>
+                  <input
+                    type="text"
+                    placeholder="Rua, nº, Bairro, Cidade"
+                    value={endereco}
+                    onChange={e => setEndereco(e.target.value)}
+                  />
                 </div>
-                <div className="linha">
-                  <div className="campo">
-                    <label>Endereço</label>
-                    <input type="text" value={endereco} onChange={e => setEndereco(e.target.value)} />
-                  </div>
-                  <div className="campo">
-                    <label>Data de Nascimento</label>
-                    <input type="date" value={data_nascimento} onChange={e => setDataNascimento(e.target.value)} />
-                  </div>
+                <div className="campo">
+                  <label>Data de Nascimento</label>
+                  <input
+                    type="date"
+                    value={data_nascimento}
+                    onChange={e => setDataNascimento(e.target.value)}
+                  />
                 </div>
               </div>
+            </div>
 
             <div className="coluna2">
               <div className="linha">
                 <div className="campo">
                   <label>Email</label>
-                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+                  <input
+                    type="email"
+                    placeholder="exemplo@email.com"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
                 </div>
                 <div className="campo">
                   <label>Telefone</label>
-                  <input type="tel" value={telefone} onChange={e => setTelefone(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="(99) 99999-9999"
+                    value={telefone}
+                    onChange={handleTelefoneChange}
+                  />
                 </div>
               </div>
 
               <div className="linha">
                 <div className="campo">
                   <label>Nome do responsável</label>
-                  <input type="text" value={nome_responsavel1} onChange={e => setNomeresponsavel1(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="Ex: Maria Silva"
+                    value={nome_responsavel1}
+                    onChange={e => setNomeresponsavel1(e.target.value)}
+                  />
                 </div>
                 <div className="campo">
                   <label>Nome da responsável</label>
-                  <input type="text" value={nome_responsavel2} onChange={e => setNomeresponsavel2(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="Ex: José Silva"
+                    value={nome_responsavel2}
+                    onChange={e => setNomeresponsavel2(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
@@ -129,7 +180,12 @@ export default function CadastroPaciente() {
             </div>
             <div className="campo">
               <label>O paciente tem comorbidades?</label>
-              <input type="text" value={comorbidades} onChange={e => setComorbidades(e.target.value)} />
+              <input
+                type="text"
+                placeholder="Ex: Hipertensão, Diabetes..."
+                value={comorbidades}
+                onChange={e => setComorbidades(e.target.value)}
+              />
             </div>
           </div>
           <Botao type="submit" children="Cadastrar" />
