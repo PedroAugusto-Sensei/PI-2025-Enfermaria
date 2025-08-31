@@ -150,7 +150,7 @@ export default function CadastroPaciente() {
                   <label>Nome do responsável</label>
                   <input
                     type="text"
-                    placeholder="Ex: Maria Silva"
+                    placeholder="Ex: José Silva"
                     value={nome_responsavel1}
                     onChange={e => setNomeresponsavel1(e.target.value)}
                   />
@@ -159,7 +159,7 @@ export default function CadastroPaciente() {
                   <label>Nome da responsável</label>
                   <input
                     type="text"
-                    placeholder="Ex: José Silva"
+                    placeholder="Ex: Maria Silva"
                     value={nome_responsavel2}
                     onChange={e => setNomeresponsavel2(e.target.value)}
                   />
@@ -170,7 +170,7 @@ export default function CadastroPaciente() {
 
           <h3 className="titulos-guia">Informações extras</h3>
 
-          <div className="linha">
+          <div className="linha" id="linha-extra">
             <div className="campo">
               <label>O paciente fuma?</label>
               <select value={fuma ? "Sim" : "Não"} onChange={e => setFuma(e.target.value === "Sim")}>

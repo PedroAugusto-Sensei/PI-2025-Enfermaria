@@ -39,6 +39,23 @@ body {
   margin-bottom: 1.875rem;
 }
 
+@media (max-width: 768px) {
+  .formulario {
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .dados-basicos {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #linha-extra {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .coluna1 {
   display: flex;
   flex-direction: column;

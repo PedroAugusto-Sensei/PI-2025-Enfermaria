@@ -42,8 +42,8 @@ def popular_pacientes():
             'endereco': 'Rua das Flores, 123, Centro, Curitibanos-SC',
             'email': 'ana.oliveira@email.com',
             'telefone': '(49) 99999-1234',
-            'nome_pai': 'Carlos Oliveira',
-            'nome_mae': 'Rita Oliveira',
+            'nome_responsavel1': 'Carlos Oliveira',
+            'nome_responsavel2': 'Rita Oliveira',
             'fuma': False,
             'comorbidades': 'Hipertensão arterial, Diabetes tipo 2'
         },
@@ -54,8 +54,8 @@ def popular_pacientes():
             'endereco': 'Av. Brasil, 456, Bairro Alto, Curitibanos-SC',
             'email': 'pedro.costa@email.com',
             'telefone': '(49) 98888-5678',
-            'nome_pai': 'José Costa',
-            'nome_mae': 'Carmen Costa',
+            'nome_responsavel1': 'José Costa',
+            'nome_responsavel2': 'Carmen Costa',
             'fuma': True,
             'comorbidades': 'Asma brônquica'
         }

@@ -48,8 +48,8 @@ def init_routes(app):
                 'endereco': p.endereco,
                 'email': p.email,
                 'telefone': p.telefone,
-                'nome_pai': p.nome_pai,
-                'nome_mae': p.nome_mae,
+                'nome_responsavel1': p.nome_responsavel1,
+                'nome_responsavel2': p.nome_responsavel2,
                 'fuma': p.fuma,
                 'comorbidades': p.comorbidades
             } for p in pacientes]), 200
@@ -70,8 +70,8 @@ def init_routes(app):
                 'endereco': paciente.endereco,
                 'email': paciente.email,
                 'telefone': paciente.telefone,
-                'nome_pai': paciente.nome_pai,
-                'nome_mae': paciente.nome_mae,
+                'nome_responsavel1': paciente.nome_responsavel1,
+                'nome_responsavel2': paciente.nome_responsavel2,
                 'fuma': paciente.fuma,
                 'comorbidades': paciente.comorbidades
             }), 200
@@ -95,8 +95,8 @@ def init_routes(app):
                 endereco=data['endereco'],
                 email=data['email'],
                 telefone=data['telefone'],
-                nome_pai=data.get('nome_pai'),
-                nome_mae=data.get('nome_mae'),
+                nome_responsavel1=data.get('nome_responsavel1'),
+                nome_responsavel2=data.get('nome_responsavel2'),
                 fuma=data.get('fuma', False),
                 comorbidades=data.get('comorbidades')
             )

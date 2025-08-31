@@ -123,8 +123,8 @@ export default function HistoricoPaciente() {
             </div>
 
             <div className="infos-linha">
-              <p><strong>Nome pai:</strong> {paciente.nome_pai || 'N/A'}</p>
-              <p><strong>Nome mãe:</strong> {paciente.nome_mae || 'N/A'}</p>
+              <p><strong>Nome pai:</strong> {paciente.nome_responsavel1 || 'N/A'}</p>
+              <p><strong>Nome mãe:</strong> {paciente.nome_responsavel2 || 'N/A'}</p>
             </div>
 
             <div className="infos-linha">

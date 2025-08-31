@@ -30,8 +30,8 @@ class Paciente(db.Model):
     endereco = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
     telefone = db.Column(db.String(20), nullable=False)
-    nome_pai = db.Column(db.String(100))
-    nome_mae = db.Column(db.String(100))
+    nome_responsavel1 = db.Column(db.String(100))
+    nome_responsavel2 = db.Column(db.String(100))
     fuma = db.Column(db.Boolean, default=False)
     comorbidades = db.Column(db.Text)
 
