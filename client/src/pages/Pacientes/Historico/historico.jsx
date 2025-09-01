@@ -143,7 +143,7 @@ export default function HistoricoPaciente() {
         
 
         <div className="titulo-hist-container">
-          <h2 className="titulo-hist">Histócio de Consultas</h2>
+          <h2 className="titulo-hist">Histórico de Consultas</h2>
         </div>
 
         {/* Lista de Consultas */}
