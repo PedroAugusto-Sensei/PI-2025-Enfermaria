@@ -135,19 +135,19 @@ export default function HistoricoPaciente() {
             </div>
 
             <div className="infos-linha-endereco">
-              <p><strong>Rua:</strong> {paciente.endereco || 'N/A'}</p>
-              <p><strong>CEP:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>Rua:</strong> {paciente.rua || 'N/A'}</p>
+              <p><strong>CEP:</strong> {paciente.cep || 'N/A'}</p>
             </div>
 
             
             <div className="infos-linha">
-              <p><strong>Bairro:</strong> {paciente.endereco || 'N/A'}</p>
-              <p><strong>Cidade:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>Bairro:</strong> {paciente.bairro || 'N/A'}</p>
+              <p><strong>Cidade:</strong> {paciente.cidade || 'N/A'}</p>
             </div>
 
             <div className="infos-linha">
-              <p><strong>Número:</strong> {paciente.endereco || 'N/A'}</p>
-              <p><strong>Complemento:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>Número:</strong> {paciente.numero || 'N/A'}</p>
+              <p><strong>Complemento:</strong> {paciente.complemento || 'N/A'}</p>
             </div>
 
           </div>

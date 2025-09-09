@@ -83,6 +83,13 @@ export default function Pacientes() {
           />
         </div>
 
+        <div className="header-tabelas">
+            <p>Nome do Paciente</p>
+            <p>Sexo</p>
+            <p>E-mail</p>
+            <p>Históricos/Consultas</p>
+        </div>
+
         {loading && (
           <div className="loading">
             <p>Carregando pacientes...</p>
