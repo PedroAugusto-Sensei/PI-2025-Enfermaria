@@ -12,6 +12,7 @@ export default function HistoricoPaciente() {
   const { id } = useParams();
   const [historico, setHistorico] = useState([]);
   const [paciente, setPaciente] = useState(null);
+  const [horarioConsulta, setHorarioConsulta] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -28,6 +29,9 @@ export default function HistoricoPaciente() {
         // Buscar histórico do paciente
         const historicoResponse = await axios.get(`http://localhost:5000/api/historico/paciente/${id}`);
         setHistorico(historicoResponse.data);
+
+        const consultaResponse = await axios.get(`http://localhost:5000/api/consultas/${id}`);
+        setHorarioConsulta(consultaResponse.data);
         
       } catch (err) {
         console.error('Erro ao buscar dados:', err);
@@ -100,11 +104,6 @@ export default function HistoricoPaciente() {
 
         {/* Info do Paciente */}
         <div className="paciente-nome-container ">
-          <hr className="linha" />
-          <span className="paciente-nome">
-            {paciente ? paciente.nome_paciente : 'Paciente não encontrado'}
-          </span>
-          <hr className="linha" />
         </div>
 
         <div className="infos-paciente-container">
@@ -112,32 +111,48 @@ export default function HistoricoPaciente() {
 
           <div className="infos-paciente">
             <div className="infos-linha">
+            <p><strong> Nome: </strong>{paciente.nome_paciente }</p>
               <p><strong>Data de Nascimento:</strong> {formatarData(paciente.data_nascimento) || 'N/A'}</p>
               <p><strong>Idade:</strong> {idadeAtual(paciente.data_nascimento) || 'N/A'}</p>
-              <p><strong>Sexo:</strong> {paciente.sexo || 'N/A'}</p>
+              <p><strong>Telefone:</strong> {paciente.telefone || 'N/A'}</p>
             </div>
 
             <div className="infos-linha">
-              <p><strong>Telefone:</strong> {paciente.telefone || 'N/A'}</p>
+              <p><strong>Sexo:</strong> {paciente.sexo || 'N/A'}</p>
+              
               <p><strong>Email:</strong> {paciente.email || 'N/A'}</p>
             </div>
 
             <div className="infos-linha">
-              <p><strong>Nome pai:</strong> {paciente.nome_responsavel1 || 'N/A'}</p>
+              <p><strong>Fuma:</strong> {paciente.fuma ? 'Sim' : 'Não'}</p>
+              
               <p><strong>Nome mãe:</strong> {paciente.nome_responsavel2 || 'N/A'}</p>
             </div>
 
             <div className="infos-linha">
-              <p><strong>Endereço:</strong> {paciente.endereco || 'N/A'}</p>
-              <p><strong>Fuma:</strong> {paciente.fuma ? 'Sim' : 'Não'}</p>
+              <p><strong>Comorbidades:</strong> {paciente.comorbidades || 'N/A'}</p>
+              <p><strong>Nome pai:</strong> {paciente.nome_responsavel1 || 'N/A'}</p>
+            </div>
+
+            <div className="infos-linha-endereco">
+              <p><strong>Rua:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>CEP:</strong> {paciente.endereco || 'N/A'}</p>
+            </div>
+
+            
+            <div className="infos-linha">
+              <p><strong>Bairro:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>Cidade:</strong> {paciente.endereco || 'N/A'}</p>
             </div>
 
             <div className="infos-linha">
-              <p><strong>Comorbidades:</strong> {paciente.comorbidades || 'N/A'}</p>
+              <p><strong>Número:</strong> {paciente.endereco || 'N/A'}</p>
+              <p><strong>Complemento:</strong> {paciente.endereco || 'N/A'}</p>
             </div>
+
           </div>
 
-          <hr/>
+          
         </div>
 
         
@@ -151,10 +166,13 @@ export default function HistoricoPaciente() {
           {historico.length > 0 ? (
             historico.map((consulta) => (
               <>
-                <div className="barra-separadora"></div>
+                
                 <div key={consulta.id_consulta} className="consulta-item">
                   <span className="consulta-data">
                     Data: {formatarData(consulta.data_consulta)}
+                    </span>
+                    <span className="consulta-hora">
+                    Hora: {horarioConsulta.hora_consulta}
                   </span>
                   <Botao 
                     variante="claro" 
