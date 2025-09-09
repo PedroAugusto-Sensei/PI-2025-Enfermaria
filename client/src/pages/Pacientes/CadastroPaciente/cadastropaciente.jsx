@@ -107,7 +107,7 @@ export default function CadastroPaciente() {
                   <label>Endereço</label>
                   <input
                     type="text"
-                    placeholder="Rua, nº, Bairro, Cidade"
+                    placeholder="Rua, nº, Bairro, Cidade, CEP, Estado"
                     value={endereco}
                     onChange={e => setEndereco(e.target.value)}
                   />
